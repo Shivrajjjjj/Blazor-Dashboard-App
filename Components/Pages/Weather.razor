@@ -1,0 +1,149 @@
+﻿@page "/weather"
+@attribute [StreamRendering]
+
+<PageTitle>Weather</PageTitle>
+
+<div class="container text-center mt-5">
+    <!-- Header Section -->
+    <h1 class="text-info font-weight-bold mb-4">Weather Forecast</h1>
+
+    <!-- Description Section -->
+    <p class="lead text-muted mb-4">Stay updated with the latest weather forecast and plan your day accordingly!</p>
+
+    <!-- Loading State -->
+    @if (forecasts == null)
+    {
+        <p class="text-center"><em>Loading forecast data...</em></p>
+    }
+    else
+    {
+        <!-- Table Section -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover shadow-lg">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Date</th>
+                        <th>Temp. (°C)</th>
+                        <th>Temp. (°F)</th>
+                        <th>Summary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var forecast in forecasts)
+                    {
+                        <tr>
+                            <td>@forecast.Date.ToShortDateString()</td>
+                            <td>@forecast.TemperatureC</td>
+                            <td>@forecast.TemperatureF</td>
+                            <td>@forecast.Summary</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <!-- Action Section -->
+    <div class="text-center mt-4">
+        <a class="btn btn-lg btn-primary shadow-lg" href="/dashboard">
+            Back to Dashboard
+        </a>
+    </div>
+</div>
+
+<style>
+    /* Font Styling */
+    .font-weight-bold {
+        font-weight: bold;
+    }
+
+    /* Header Styling */
+    h1 {
+        font-size: 2.5rem;
+        color: #17a2b8; /* Info color */
+    }
+
+    /* Description Styling */
+    .lead {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+
+    /* Table Styling */
+    .table-bordered {
+        border: 2px solid #dee2e6;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .shadow-lg {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+
+    .btn-lg {
+        padding: 1rem 2.5rem;
+    }
+
+    /* Table Header Styling */
+    .table-dark th {
+        background-color: #343a40;
+        color: white;
+    }
+
+    /* Footer Styling */
+    footer {
+        font-size: 0.9rem;
+        padding: 1rem;
+        background-color: #f8f9fa;
+    }
+
+    /* Text and Section Spacing */
+    .mt-5 {
+        margin-top: 3rem;
+    }
+
+    .mt-4 {
+        margin-top: 2rem;
+    }
+
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+</style>
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate asynchronous loading to demonstrate streaming rendering
+        await Task.Delay(500);
+
+        var startDate = DateOnly.FromDateTime(DateTime.Now);
+        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        {
+            Date = startDate.AddDays(index),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = summaries[Random.Shared.Next(summaries.Length)]
+        }).ToArray();
+    }
+
+    private class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+        public int TemperatureC { get; set; }
+        public string? Summary { get; set; }
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}
