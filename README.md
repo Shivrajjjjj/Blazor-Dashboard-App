@@ -17,32 +17,7 @@ This app showcases essential features like dynamic data tables, weather forecast
 
 ---
 
-## 📁 Project Structure
 
-```
-BlazorDashboardApp/
-│
-├── Pages/
-│   ├── Index.razor        # Home page
-│   ├── Dashboard.razor    # Dynamic data grid
-│   ├── Weather.razor      # Weather updates
-│   └── Counter.razor      # Interactive counter
-│
-├── Services/
-│   └── DashboardService.cs # Sample data provider
-│
-├── wwwroot/
-│   ├── css/custom.css
-│   └── js/custom.js
-│
-├── Shared/
-│   └── MainLayout.razor
-│
-├── App.razor
-└── Program.cs
-```
-
----
 
 ## ✨ Features
 
