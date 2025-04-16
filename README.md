@@ -75,17 +75,6 @@ Open in browser:
 
 ---
 
-## 📚 Resources & References
-
-- [Blazor Docs (Microsoft)](https://learn.microsoft.com/en-us/aspnet/core/blazor/)
-- [Bootstrap 5](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
-- [Font Awesome Icons](https://fontawesome.com/icons)
-- [ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/)
-- [Blazor Server vs WebAssembly](https://learn.microsoft.com/en-us/aspnet/core/blazor/hosting-models)
-
----
-
-
 
 ## 🔧 Custom Styling
 
