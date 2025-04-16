@@ -94,9 +94,3 @@ Open in browser:
 - Link them via `_Layout.razor` or inside `index.html` if needed.
 
 ---
-
-
-
-Made with ❤️ using [Blazor](https://dotnet.microsoft.com/en-us/apps/aspnet/web-apps/blazor)
-```
-
