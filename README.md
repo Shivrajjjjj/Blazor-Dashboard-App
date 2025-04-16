@@ -49,12 +49,3 @@ Open in browser:
 🌐 `http://localhost:5000` or `https://localhost:5001`
 
 ---
-
-
-## 🔧 Custom Styling
-
-- Use `wwwroot/css/custom.css` for your own theming and overrides.
-- Use `wwwroot/js/custom.js` to add interactivity like modals, alerts, etc.
-- Link them via `_Layout.razor` or inside `index.html` if needed.
-
----
